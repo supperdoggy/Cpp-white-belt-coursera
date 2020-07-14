@@ -7,9 +7,16 @@
 //
 
 #include <iostream>
-
+using namespace std;
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    int nums[2];
+    cin >> nums[0] >> nums[1];
+    if (nums[1]==0){
+        cout << "Impossible";
+    }
+    else{
+        cout << nums[0]/nums[1];
+    }
+    
     return 0;
 }
