@@ -13,38 +13,27 @@
 
 using namespace std;
 
-string lower(string s){
-    string newS = "";
-    for (auto c: s){
-        newS += tolower(c);
-    }
-    return newS;
-}
-
 void print(vector<string> s){
     for (auto c: s){
         cout << c << ", ";
     }
 }
 
+bool IsPalindrom(string s) {
+    for (int i = 0; i < s.size() / 2; ++i) {
+        if (s[i] != s[s.size() - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 vector<string> PalindromFilter(vector<string> words, int minLength){
     vector<string> ready;
     for (auto s: words){
         if (s.size()>=minLength){
-            s = lower(s);
-            int h = s.size() - 1;
-            int l = 0;
-            bool palindrome = true;
-            while (h > l)
-            {
-                if (s[l++] != s[h--]){
-                    palindrome = false;
-                    break;
-                }
-            }
-            if (palindrome) {
+            if (IsPalindrom(s))
                 ready.push_back(s);
-            }
         }
     }
     if (ready.size()>0)
