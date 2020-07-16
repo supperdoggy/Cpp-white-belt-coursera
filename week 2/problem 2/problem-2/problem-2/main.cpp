@@ -13,12 +13,6 @@
 
 using namespace std;
 
-void print(vector<string> s){
-    for (auto c: s){
-        cout << c << ", ";
-    }
-}
-
 bool IsPalindrom(string s) {
     for (int i = 0; i < s.size() / 2; ++i) {
         if (s[i] != s[s.size() - i - 1]) {
@@ -31,19 +25,13 @@ bool IsPalindrom(string s) {
 vector<string> PalindromFilter(vector<string> words, int minLength){
     vector<string> ready;
     for (auto s: words){
-        if (s.size()>=minLength){
-            if (IsPalindrom(s))
+        if (s.size()>=minLength && IsPalindrom(s)){
                 ready.push_back(s);
         }
     }
-    if (ready.size()>0)
-        return ready;
-    else
-        return words;
+    return ready;
 }
 
 int main(int argc, const char * argv[]) {
-    vector<string> s = {"HELLO", "code", "aba", "weew", "bro"};
-    print(PalindromFilter(s, 2));
     return 0;
 }
